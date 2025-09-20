@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frigorífico Kosher - Gestión de Cajones</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Frigorífico Kosher</h1>
+        <p class="tagline">Pedidos mayoristas de cajones de pollo kosher - no se realizan pedidos particulares.</p>
+        <nav>
+            <a href="#cliente" id="cliente-link">Ingreso de clientes</a>
+            <a href="#admin" id="admin-link">Ingreso de administradores</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="cliente" class="panel">
+            <h2>Pedidos para clientes</h2>
+            <p>Complete los datos de su comercio y seleccione el cajón deseado.</p>
+            <form id="cliente-form">
+                <label for="cliente-nombre">Nombre del local</label>
+                <input type="text" id="cliente-nombre" required>
+
+                <label for="cliente-direccion">Dirección</label>
+                <input type="text" id="cliente-direccion" required>
+
+                <label for="cliente-cajon">Tipo de cajón</label>
+                <select id="cliente-cajon" required>
+                    <!-- opciones generadas dinámicamente -->
+                </select>
+
+                <label for="cliente-cantidad">Cantidad de cajones</label>
+                <input type="number" id="cliente-cantidad" min="1" step="1" required>
+
+                <button type="submit">Enviar pedido</button>
+            </form>
+            <div id="cliente-mensaje" role="status" aria-live="polite"></div>
+        </section>
+
+        <section id="admin" class="panel">
+            <h2>Acceso para administradores</h2>
+            <form id="admin-login-form">
+                <label for="admin-alias">Nombre a mostrar</label>
+                <input type="text" id="admin-alias" required>
+
+                <label for="admin-usuario">Usuario</label>
+                <input type="text" id="admin-usuario" required>
+
+                <label for="admin-password">Contraseña</label>
+                <input type="password" id="admin-password" required>
+
+                <button type="submit">Ingresar</button>
+            </form>
+            <div id="admin-login-error" role="alert"></div>
+
+            <section id="admin-panel" hidden>
+                <div class="admin-header">
+                    <h3>Panel de administración</h3>
+                    <button id="admin-logout" class="secondary">Cerrar sesión</button>
+                </div>
+                <p class="bienvenida"></p>
+
+                <div class="admin-grid">
+                    <article>
+                        <h4>Stock de cajones</h4>
+                        <table id="tabla-stock">
+                            <thead>
+                                <tr>
+                                    <th>Cajón</th>
+                                    <th>Stock actual</th>
+                                    <th>Actualizar</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </article>
+
+                    <article>
+                        <h4>Precios mayoristas</h4>
+                        <table id="tabla-precios">
+                            <thead>
+                                <tr>
+                                    <th>Cajón</th>
+                                    <th>Precio actual</th>
+                                    <th>Actualizar</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </article>
+
+                    <article class="historial">
+                        <h4>Historial de pedidos</h4>
+                        <table id="tabla-pedidos">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Cliente</th>
+                                    <th>Cajón</th>
+                                    <th>Cantidad</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </article>
+
+                    <article class="historial">
+                        <h4>Historial de entregas</h4>
+                        <ul id="lista-entregas"></ul>
+                    </article>
+
+                    <article class="historial">
+                        <h4>Historial de accesos administrativos</h4>
+                        <ul id="lista-logins"></ul>
+                    </article>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <small>&copy; <span id="anio-actual"></span> Frigorífico Kosher. Todos los derechos reservados.</small>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
